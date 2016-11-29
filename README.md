@@ -13,7 +13,7 @@ Tel-Aviv (map)
 Developing apps that integrate with git providers (Github, bitbucket, gitlab) require separate integration with each one. 
 
 #### Solution
-A single API to rule them all.
+One API to rule them all.
 One npm package that generalizes integration with git providers. We can't get fully compatible with neither service. Let's get 80% compatible with all.
  
 #### Goals:
