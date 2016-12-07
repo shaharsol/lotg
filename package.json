@@ -2,10 +2,11 @@
   "name": "lotg",
   "version": "0.0.1",
   "dependencies": {
+    "async": "*",
+    "gitlab": "^1.7.1",
+    "parse-link-header": "*",
     "request": "*",
     "underscore": "*",
-    "underscore.string": "*",
-    "async": "*",
-    "parse-link-header": "*"
+    "underscore.string": "*"
   }
 }
