@@ -23,7 +23,7 @@ One npm package that generalizes integration with git providers. We can't get fu
 - Implement at least one usecase (e.g. getUserRepos)
 - Build a demo app that uses the package and demonstrate how it works against Github, Bitbucket and Gitlab without changing a sinle line of code (only configuration)
 
-#### API Commands
+#### API Commands that we've implemented
 - getUserRepos - get a list of repositories of a certain user
 - getUserCommits - get a list of commits that a certain user perform on all the repos
 - getUserCommitsCount - get a number of commits that a certain user perform on all the repos

@@ -7,12 +7,23 @@ module.exports = {
       url:   'https://gitlab.com/',
       token: accessToken
     });
-
+    var returnArray = [];
 // Listing projects
-    gitlab.projects.all(function(projects) {callback(null,projects)});},
-  
+    gitlab.projects.all(function(projects) {
+      for (var i = 0; i < projects.length; i++){
+        returnArray.push(
+          {
+            id : projects[i]['id'],
+            name : projects[i]['name'],
+            url : projects[i]['web_url'] 
+          });
+        }
+        callback(null, returnArray);
+    });
     
-  listRepoCommits : function(accessToken,id,callback){
+  } ,
+  
+  getRepoCommits : function(accessToken,id,callback){
     var url = 'https://gitlab.com/';
     var request = require('request');
     var gitlab = require('gitlab')({
@@ -24,12 +35,26 @@ module.exports = {
     var getPath = url + 'api/v3/projects/' + id + '/repository/commits?private_token=' + accessToken;
     request(getPath, function (error, response, body) {
       if (error){callback(error)}
-        if (!error && response.statusCode < 400) 
-          {callback(null,JSON.parse(body))}
+      if (!error && response.statusCode < 400){ 
+        var returnArray = [];
+        body = JSON.parse(body);
+        for (var i = 0; i < body.length; i++){
+          returnArray.push(
+            {
+              id : body[i]['id'],
+              author : body[i]['author_name'],
+              message : body[i]['message'] 
+            });
+          }
+          {callback(null, returnArray);}
+        }
       else {callback(null,response)}
     })
   },
+  
   commitsByUser : function(accessToken,id,userEmail, callback){
-    var commitList = this.listRepoCommits(accessToken, id, callback);
-    callback (null, _.where(commitList, {author_email: userEmail}));
-  }}
+    this.listRepoCommits(accessToken, id, function(err,commits){
+        callback (null, _.where(commits, {author_email: userEmail}));
+      }
+    )}
+  }
