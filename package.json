@@ -6,6 +6,6 @@
     "underscore": "*",
     "underscore.string": "*",
     "async": "*",
-    "parse-link-header": "*",
+    "parse-link-header": "*"
   }
 }
