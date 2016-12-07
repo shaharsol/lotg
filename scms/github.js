@@ -1,6 +1,7 @@
 var GitHubApi = require('github');
 var github = new GitHubApi({});
 var util = require('util')
+var _ = require('underscore')
 module.exports = {
     getUserRepos: function(accessToken,callback){
             github.authenticate({
@@ -8,8 +9,18 @@ module.exports = {
                 token: accessToken
             });
           github.repos.getAll({},function(err,res){
-            //   console.log(util.inspect(res))
-              callback(err,res);
+              var repos = [];
+              _.each(res,function(item,key){
+                  if(key != 'meta'){
+                      repos.push({
+                          id: item.id,
+                          name: item.name,
+                          url: item.html_url
+                      })
+                  }
+              })
+              console.log(util.inspect(repos))
+              callback(err,repos);
           })
       },
      getUserCommits: function(accessToken,callback){
@@ -29,7 +40,7 @@ module.exports = {
                },function(err,commits){
                     // console.log('------------------------------------------------------------------------------------')
                     // console.log('commits are %s',util.inspect(commits))
-                callback(err,commits)
+                    callback(err,commits)
                })
             })
          });
