@@ -8,17 +8,15 @@ module.exports = {
     var client = bitbucket.createClient(credentials);
 
     client.repositories(function(err,repos){
-      console.log(util.inspect(repos))
 
       var minified = [];
       _.each(repos,function(repo){
         minified.push({
-          id: repo.name,
-          name: repo.slug,
-          url: resource_uri
+          id: repo.slug,
+          name: repo.name,
+          url: repo.resource_uri
         })
       })
-      console.log(util.inspect(minified))
       callback(err,minified)
 
     })
