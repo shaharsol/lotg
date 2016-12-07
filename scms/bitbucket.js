@@ -1,5 +1,6 @@
 var bitbucket = require('bitbucket-api');
 var util = require('util')
+var _ = require('underscore')
 
 module.exports = {
   getUserRepos: function(accessToken,callback){
@@ -8,7 +9,18 @@ module.exports = {
 
     client.repositories(function(err,repos){
       console.log(util.inspect(repos))
-      callback(err,repos)
+
+      var minified = [];
+      _.each(repos,function(repo){
+        minified.push({
+          id: repo.name,
+          name: repo.slug,
+          url: resource_uri
+        })
+      })
+      console.log(util.inspect(minified))
+      callback(err,minified)
+
     })
 
 
