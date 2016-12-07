@@ -1,0 +1,14 @@
+{
+  "github": {
+    "scm": "github",
+    "access_token": "",
+  },
+  "bitbucket": {
+    "scm": "bitbucket",
+    "access_token": "",
+  },
+  "gitlab": {
+    "scm": "gitlab",
+    "access_token": "",
+  }
+}
