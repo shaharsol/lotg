@@ -5,6 +5,7 @@
     "async": "*",
     "github": "^7.0.1",
     "node-github": "*",
+    "gitlab": "^1.7.1",
     "parse-link-header": "*",
     "request": "*",
     "underscore": "*",
