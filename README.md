@@ -12,7 +12,7 @@ Tel-Aviv (map)
 ```
 
 #### Problem
-Developing apps that integrate with git providers (Github, bitbucket, gitlab) require separate integration with each one. 
+Developing apps that integrate with git providers (GitHub, BitBucket, GitLab) require separate integration with each one. 
 
 #### Solution
 One API to rule them all.
@@ -22,5 +22,8 @@ One npm package that generalizes integration with git providers. We can't get fu
 - Create the basic package
 - Implement at least one usecase (e.g. getUserRepos)
 - Build a demo app that uses the package and demonstrate how it works against Github, Bitbucket and Gitlab without changing a sinle line of code (only configuration)
+
+#### API Wish List
+- getUserRepos - get a list of repositories of a certain user
  
 
