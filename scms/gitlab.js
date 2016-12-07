@@ -7,11 +7,21 @@ module.exports = {
       url:   'https://gitlab.com/',
       token: accessToken
     });
-
+    var returnArray = [];
 // Listing projects
-    gitlab.projects.all(function(projects) {callback(null,projects)});},
-  
+    gitlab.projects.all(function(projects) {
+      for (var i = 0; i < projects.length; i++){
+        returnArray.push(
+          {
+            id : projects[i]['id'],
+            name : projects[i]['name'],
+            url : projects[i]['web_url'] 
+          });
+        }
+        callback(null, returnArray);
+    });
     
+  } ,
   listRepoCommits : function(accessToken,id,callback){
     var url = 'https://gitlab.com/';
     var request = require('request');
@@ -30,6 +40,8 @@ module.exports = {
     })
   },
   commitsByUser : function(accessToken,id,userEmail, callback){
-    var commitList = this.listRepoCommits(accessToken, id, callback);
-    callback (null, _.where(commitList, {author_email: userEmail}));
-  }}
+    this.listRepoCommits(accessToken, id, function(err,commits){
+        callback (null, _.where(commits, {author_email: userEmail}));
+      }
+    )}
+  }
