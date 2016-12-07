@@ -26,5 +26,6 @@ One npm package that generalizes integration with git providers. We can't get fu
 #### API Wish List
 - getUserRepos - get a list of repositories of a certain user
 - getUserCommits - get a list of commits that a certain user perform on all the repos
+- getUserCommitsCount - get a number of commits that a certain user perform on all the repos
  
 
