@@ -1,0 +1,11 @@
+{
+  "name": "lotg",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "*",
+    "underscore": "*",
+    "underscore.string": "*",
+    "async": "*",
+    "parse-link-header": "*",
+  }
+}
