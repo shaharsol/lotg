@@ -1,3 +1,5 @@
+![Lord Of The Git](logo/LordOfTheGit.png)
+
 ## Fullstack 1st Hackathon - Lord of the Git
 ![FULLSTACK DEVELOPERS ISRAEL](https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/1/3/4/e/global_448264942.jpeg)
 
