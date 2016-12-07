@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 module.exports = {
   
   getUserRepos: function(accessToken,callback){
@@ -26,4 +28,8 @@ module.exports = {
           {callback(null,JSON.parse(body))}
       else {callback(null,response)}
     })
-}}
+  },
+  commitsByUser : function(accessToken,id,userEmail, callback){
+    var commitList = this.listRepoCommits(accessToken, id, callback);
+    callback (null, _.where(commitList, {author_email: userEmail}));
+  }}
