@@ -1,5 +1,12 @@
+
+var github = require('./scms/github')
+var bitbucket = require('./scms/bitbucket')
+var gitlab = require('./scms/gitlab')
+
 var config;
+
 module.exports = {
+
   getUserRepos: function(accessToken,callback){
     switch(config.scm){
       case 'github':
