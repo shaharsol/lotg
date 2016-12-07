@@ -1,4 +1,5 @@
 module.exports = {
+  
   getUserRepos: function(accessToken,callback){
     var gitlab = require('gitlab')({
       url:   'https://gitlab.com/',
@@ -6,11 +7,23 @@ module.exports = {
     });
 
 // Listing projects
-    gitlab.projects.all(function(projects) {
-      // for (var i = 0; i < projects.length; i++) {
-      //   console.log("#" + projects[i].id + ": " + projects[i].name + ", path: " + projects[i].path + ", default_branch: " + projects[i].default_branch + ", private: " + projects[i]["private"] + ", owner: " + projects[i].owner.name + " (" + projects[i].owner.email + "), date: " + projects[i].created_at);
-      // }
-      callback(null,projects)
+    gitlab.projects.all(function(projects) {callback(null,projects)});},
+  
+    
+  listRepoCommits : function(accessToken,id,callback){
+    var url = 'https://gitlab.com/';
+    var request = require('request');
+    var gitlab = require('gitlab')({
+      url:   url,
+      token: accessToken
     });
-  }
-};
+    
+    // Listing commits
+    var getPath = url + 'api/v3/projects/' + id + '/repository/commits?private_token=' + accessToken;
+    request(getPath, function (error, response, body) {
+      if (error){callback(error)}
+        if (!error && response.statusCode < 400) 
+          {callback(null,JSON.parse(body))}
+      else {callback(null,response)}
+    })
+}}
