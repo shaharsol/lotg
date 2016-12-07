@@ -21,6 +21,20 @@ module.exports = {
     }
   },
 
+  getRepoCommits: function(accessToken,repoID,callback){
+    switch(this.config.scm){
+      case 'github':
+      github.getRepoCommits(accessToken,repoID,callback);
+      break;
+      case 'bitbucket':
+      bitbucket.getRepoCommits(accessToken,repoID,callback);
+      break;
+      case 'gitlab':
+      gitlab.getRepoCommits(accessToken,repoID,callback);
+      break;
+    }
+  },
+
   init: function(config){
     this.config = config;
   },
