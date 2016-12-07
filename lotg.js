@@ -8,7 +8,7 @@ var config;
 module.exports = {
 
   getUserRepos: function(accessToken,callback){
-    switch(config.scm){
+    switch(this.config.scm){
       case 'github':
       github.getUserRepos(accessToken,callback);
       break;

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "async": "*",
+    "bitbucket-api": "^0.1.0",
     "github": "^7.0.1",
     "node-github": "*",
     "gitlab": "^1.7.1",
