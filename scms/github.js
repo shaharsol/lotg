@@ -8,7 +8,7 @@ module.exports = {
                 token: accessToken
             });
           github.repos.getAll({},function(err,res){
-              console.log(util.inspect(res))
+            //   console.log(util.inspect(res))
               callback(err,res);
           })
       },
@@ -33,9 +33,27 @@ module.exports = {
                })
             })
          });
-
-
-
-
-     }
+     },
+     getUserCommitNum: function(accessToken,callback){
+             var numOfCommits=0
+             github.authenticate({
+                 type: "oauth",
+                 token: accessToken
+             })
+             var author;
+             github.users.get({},function(err,user){
+                 author = user;
+                 github.repos.getAll({},function(err,res){
+                      github.repos.getCommit({
+                           owner: res[0].owner.login,
+                           repo: res[0].name,
+                           author: author.login
+                      },function(err,commit){
+                          numOfCommits++
+                          callback(err,res);
+                      })
+                    //   console.log(util.inspect(numOfCommits))
+             })
+        })
+    }
 }
