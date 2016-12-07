@@ -9,6 +9,7 @@
     "parse-link-header": "*",
     "request": "*",
     "underscore": "*",
-    "underscore.string": "*"
+    "underscore.string": "*",
+    "config": "*"
   }
 }
