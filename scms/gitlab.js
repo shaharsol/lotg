@@ -22,7 +22,8 @@ module.exports = {
     });
     
   } ,
-  listRepoCommits : function(accessToken,id,callback){
+  
+  getRepoCommits : function(accessToken,id,callback){
     var url = 'https://gitlab.com/';
     var request = require('request');
     var gitlab = require('gitlab')({
@@ -39,6 +40,7 @@ module.exports = {
       else {callback(null,response)}
     })
   },
+  
   commitsByUser : function(accessToken,id,userEmail, callback){
     this.listRepoCommits(accessToken, id, function(err,commits){
         callback (null, _.where(commits, {author_email: userEmail}));
